@@ -1,0 +1,20 @@
+<ng-container *ngIf="users$ | async as users">
+  <h1>Users</h1>
+  <section aria-label="List of users">
+
+    <mat-list>
+      <mat-list-item *ngFor="let user of users">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <span mat-line>
+          <a color="primary" [routerLink]="['./']" [queryParams]="{id:user.id}">{{user.name |
+            titlecase}}</a>
+        </span>
+        <p mat-line><strong>Company: </strong>{{user.company}} </p>
+        <p mat-line><strong>Username: </strong> {{user.username}} </p>
+        <a mat-line [href]="'mailTo:'+ user.email"> {{user.email}} </a>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+
+  </section>
+</ng-container>
