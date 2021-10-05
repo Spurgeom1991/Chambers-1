@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.module';
 import { HomeModule } from './home/home.module';
 import { HomeComponent } from './home/home/home.component';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), MaterialModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -12,11 +12,11 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts$(): Observable<User[]> {
+  getUsers$(): Observable<User[]> {
     return this.http.get<User[]>(this._url);
   }
 
-  getPostById$(id: string): Observable<User> {
+  getUserById$(id: string): Observable<User> {
     return this.http.get<User>(this._url + id);
   }
 }

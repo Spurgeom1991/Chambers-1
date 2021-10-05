@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { UsersService } from 'src/app/shared/services';
 
 import { UserListComponent } from './user-list.component';
 
@@ -6,11 +8,15 @@ describe('UserListComponent', () => {
   let component: UserListComponent;
   let fixture: ComponentFixture<UserListComponent>;
 
+  const mockUsersService = {
+    getUsers$: () => of([]),
+  };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserListComponent ]
-    })
-    .compileComponents();
+      providers: [{ provide: UsersService, useValue: mockUsersService }],
+      declarations: [UserListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,14 +1,17 @@
-<ng-container *ngIf="posts$ | async as posts">
+<ng-container *ngIf="list$ | async as list">
+  <h1>Posts</h1>
   <section aria-label="List of posts">
 
     <mat-list>
-      <h3 matSubheader>Folders</h3>
-      <mat-list-item *ngFor="let post of posts">
-        <mat-icon matListIcon>folder</mat-icon>
-        <h4 matLine>{{post.title}}</h4>
-        <p>{{post.content}}</p>
+      <mat-list-item *ngFor="let item of list">
+        <mat-icon mat-list-icon>description</mat-icon>
+        <h3 mat-line>{{item.post.title | titlecase}}</h3>
+        <p mat-line> {{(item.post.content | slice:0:50)+'...'}} </p>
+        <a mat-raised-button color="primary" [routerLink]="['./']" [queryParams]="{id:item.post.id}">Read more</a>
+        <mat-divider></mat-divider>
+        <p mat-line><strong>Posted by: </strong>{{item.user?.name || 'unknown'}}</p>
+        <mat-divider></mat-divider>
       </mat-list-item>
-      <mat-divider></mat-divider>
     </mat-list>
 
   </section>
